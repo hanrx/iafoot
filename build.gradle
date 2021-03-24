@@ -5,6 +5,7 @@ plugins {
 group 'com.iafoot'
 version '1.0-SNAPSHOT'
 
+//Gradle引用的代码托管库
 repositories {
     mavenCentral()
 }

@@ -1,3 +1,5 @@
+//根项目名称
 rootProject.name = 'iafoot'
+//子模块名称
 include 'javademo'
 

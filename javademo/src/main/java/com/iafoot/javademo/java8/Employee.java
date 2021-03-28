@@ -1,6 +1,8 @@
 package com.iafoot.javademo.java8;
 
 
+import java.util.Objects;
+
 /**
  * @author ：iAfoot
  * @description：TODO
@@ -9,19 +11,41 @@ package com.iafoot.javademo.java8;
 //@Data
 //@AllArgsConstructor
 public class Employee {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id.equals(employee.id) && name.equals(employee.name) && age.equals(employee.age) && salary.equals(employee.salary);
+    }
 
-    public Employee(Long id, String name, Integer age, Double salary) {
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age, salary);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                '}';
+    }
+
+    public Employee(Integer id, String name, Integer age, Double salary) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.salary = salary;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,7 +73,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    private Long id;
+    private Integer id;
     private String name;
     private Integer age;
     private Double salary;

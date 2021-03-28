@@ -47,8 +47,8 @@ public class StreamAPITest {
         //  调用Arrays类的static<T> Stream<T> stream(T[] array)：返回一个流。
         IntStream stream = Arrays.stream(arr);
 
-        Employee e1 = new Employee(10001L,"Tom",12,12.3);
-        Employee e2 = new Employee(10002L,"Jom",14,12.3);
+        Employee e1 = new Employee(10001,"Tom",12,12.3);
+        Employee e2 = new Employee(10002,"Jom",14,12.3);
         Employee[] arr1 = new Employee[]{e1,e2};
         Stream<Employee> stream1 = Arrays.stream(arr1);
 

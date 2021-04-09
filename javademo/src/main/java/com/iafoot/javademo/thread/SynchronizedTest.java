@@ -1,4 +1,4 @@
-package com.iafoot.javademo.demo;
+package com.iafoot.javademo.thread;
 
 /**
  * 需求：线程隔离

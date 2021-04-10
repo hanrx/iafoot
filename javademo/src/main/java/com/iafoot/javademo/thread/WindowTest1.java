@@ -12,12 +12,17 @@ package com.iafoot.javademo.thread;
  *  synchronized（同步监视器）{
  *      //需要被同步的代码
  *  }
- *  说明：操作共享数据的代码，即为需要被同步的代码
- *       共享数据：多个线程共同操作的变量。比如ticket
+ *  说明：1. 操作共享数据的代码，即为需要被同步的代码
+ *       2. 共享数据：多个线程共同操作的变量。比如ticket
+ *       3. 同步监视器，俗称：锁。任何一个类的对象，都可以充当锁。
+ *          要求：多个线程共用同一把锁
  *
  *  方式二：同步方法
+ *  如果操作共享数据的代码完整的声明在一个方法中，我们不妨将此方法声明同步的。
  *
  *
+ * 5. 同步的方式，解决了线程的安全问题。--好处
+ *    操作同步代码时，只能有一个线程参与，其他线程等待。相当于是一个单线程的过程，效率低。--局限性。
  *
  * @author ：iAfoot
  * @description：TODO
@@ -26,14 +31,17 @@ package com.iafoot.javademo.thread;
 
 class WindowThread1 implements Runnable{
     private int ticket = 100;// 票
+    Object obj = new Object();
     @Override
     public void run() {
         while (true){
-            if (ticket > 0) {
-                System.out.println(Thread.currentThread().getName()+":卖票，票号为： "+ticket);
-                ticket --;
-            }else {
-                break;
+            synchronized (obj) {
+                if (ticket > 0) {
+                    System.out.println(Thread.currentThread().getName() + ":卖票，票号为： " + ticket);
+                    ticket--;
+                } else {
+                    break;
+                }
             }
         }
     }
